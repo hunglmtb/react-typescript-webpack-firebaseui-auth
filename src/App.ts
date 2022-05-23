@@ -9,11 +9,6 @@ export class App
         this.render();
     }
 
-    public static addTwoNumbers(num1: number, num2: number): number
-    {
-        return num1 + num2;
-    }
-
     private render(): void
     {
         ReactDOM.render(createElement(Main, { app: this }), document.getElementById("app") || document.createElement("div"));

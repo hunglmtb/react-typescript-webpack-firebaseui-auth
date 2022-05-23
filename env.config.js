@@ -1,11 +1,11 @@
 const path = require('path');
 
 const outputConfig = {
-    destPath: "./dist"
+    destPath: "../wordpress-sensei/wp-includes/embedded-react"
 };
 
 // Entry points
-// https://webpack.js.org/concepts/entry-points/ 
+// https://webpack.js.org/concepts/entry-points/
 const entryConfig = [
     "./src/App.ts",
     "./src/assets/stylesheets/app.scss",
@@ -30,7 +30,7 @@ const devServer = {
         directory: path.join(__dirname, outputConfig.destPath),
     },
     // https: true,
-    // port: "8080",
+    port: "3005",
     // host: "0.0.0.0",
     // disableHostCheck: true
 };
