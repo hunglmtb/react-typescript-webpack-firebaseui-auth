@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { App } from "./App";
 import { Hello } from "./components/Hello";
+import {FirebaseUIAuthWeb} from "./components/FirebaseUIAuthWeb";
 
 export interface MainProps
 {
@@ -24,6 +25,7 @@ export class Main extends Component<MainProps, {}>
                         <div>TypeScript + React</div>
                         <div>SCSS + Autoprefixing</div>
                     </div>
+                    <FirebaseUIAuthWeb/>
                 </Hello>
             </>
         );

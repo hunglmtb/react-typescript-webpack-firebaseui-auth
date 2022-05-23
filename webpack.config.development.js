@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { outputConfig, copyPluginPatterns, entryConfig, devServer } = require("./env.config");
 
-module.exports = (env, options) => 
+module.exports = (env, options) =>
 {
     return {
         mode: options.mode,
@@ -19,6 +19,12 @@ module.exports = (env, options) =>
                     test: /\.tsx?$/,
                     use: "ts-loader",
                     exclude: /node_modules/,
+                },
+                {
+                    test: /\.jsx?$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                    include: path.resolve(__dirname, './src'),
                 },
                 {
                     test: /\.scss$/,
@@ -62,6 +68,35 @@ module.exports = (env, options) =>
                         name: "[path][name].[ext]",
                         emitFile: false,
                     },
+                },
+                {
+                    test: /\.css$/,
+                    exclude: [/\.global\./, /node_modules/],
+                    use: [
+                        "style-loader",
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: true,
+                                autoprefixer: true,
+                            },
+                        }
+                    ]
+                },
+                {
+                    test: /\.css/,
+                    include: [/\.global\./, /node_modules/],
+                    use: [
+                        "style-loader",
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: false,
+                            },
+                        }
+                    ]
                 },
             ],
         },
